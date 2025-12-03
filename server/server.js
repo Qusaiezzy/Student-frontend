@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require("dotenv").config();
 const User = require("./Models/User");
 const AssessmentReview = require("./Models/AssessmentReview");
 const multer = require("multer");
@@ -16,7 +16,7 @@ app.use(express.json());
 // -----------------------------
 // CONNECT MONGODB ATLAS
 // -----------------------------
-mongoose.connect("mongodb+srv://qusaiezzy53_db_user:qusaiezzy53_db_password@cluster0.yt6f7lm.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
@@ -219,4 +219,5 @@ app.put("/parent-review", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+const port = process.env.port || 5000
+app.listen(port, () => console.log("Server running on port",port));

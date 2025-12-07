@@ -12,7 +12,7 @@ function navbar() {
       <div className="logout">
         <button
           onClick={() => {
-            localStorage.removeItem("user");
+             localStorage.clear(); 
             window.location.href = "/";
           }}
         >

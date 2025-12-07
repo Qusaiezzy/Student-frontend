@@ -1,63 +1,413 @@
-.main{
-  background-color: rgb(0, 217, 255);
+.main {
+  background-color: rgb(138, 171, 176); /* matching login form */
   width: 100%;
-  min-height: 50px;
   display: flex;
   align-items: center;
-  
   justify-content: space-between;
-  padding: 10px;
+  padding: 0 20px;
+  height: 70px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
 
-}
-.main .logo img{
-  height: 100px;
-  width: 100px;
-  border: 3px solid rgb(0, 0, 0);
-  border-radius: 50px;
-  margin-left: 50px;
-
-}
-.main .logout button{
-  background-color: grey;
-  color: white;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-.root{
-  margin-top: 50px;
-}
-.root .table tr td{
+.main .logo img {
+  height: 50px;
+  width: 50px;
   border: 2px solid black;
+  border-radius: 50%;
 }
-.table{
+
+.main .name h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  flex: 1; /* allow name to take remaining space */
+  color: #fff;
+  font-weight: 600;
+}
+
+.main .logout button {
+  background-color: rgb(76, 113, 113); /* same as login button */
+  color: white;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: 1px solid black;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.main .logout button:hover {
+  background-color: rgb(64, 94, 94);
+  transform: scale(1.05);
+}
+
+/* Responsive: stack items vertically on small screens */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .main .logo {
+    margin-bottom: 5px;
+  }
+
+  .main .logout {
+    margin-top: 5px;
+  }
+
+  .main .name h2 {
+    font-size: 1.2rem;
+  }
+}
+
+
+.stuDetail {
+  background-color: rgb(138, 171, 176); /* matching login/navbar */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.stuDetail h1 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.table thead {
+  background-color: rgb(76, 113, 113); /* matching login button */
+  color: white;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.table tbody tr:hover {
+  background-color: rgb(180, 215, 220);
+}
+
+.table tbody tr textarea {
+  width: 90%;
+  min-height: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.table tbody tr textarea:focus {
+  box-shadow: 0 0 5px rgb(76, 113, 113);
+}
+
+.table tbody tr button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(76, 113, 113);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.table tbody tr button:hover {
+  background-color: rgb(64, 94, 94);
+  transform: scale(1.05);
+}
+
+/* Responsive: scrollable table on small screens */
+@media (max-width: 768px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .stuDetail h1 {
+    font-size: 1.2rem;
+  }
+
+  .table tbody tr textarea {
+    width: 100%;
+  }
+}
+
+.loginMain {
+  min-height: 100vh;
   display: flex;
-  /* align-items: center; */
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1f2933, #4f46e5);
+  padding: 20px;
+}
+
+.loginMain h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.loginMain form {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.loginMain input {
+  padding: 12px 14px;
+  margin: 12px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.loginMain input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+  outline: none;
+}
+
+.loginMain button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginMain button:hover {
+  background: #3730a3;
+  transform: translateY(-1px);
+}
+
+.loginMain p {
+  margin-top: 15px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .loginMain form {
+    padding: 20px;
+  }
+}
+
+.stuDetail{
+  display: flex;
+  justify-content: space-around;
+  font-size: small;
   padding: 5px;
 }
-.table tr th{
-  padding: 10px;
-  background-color: rgb(83, 74, 74);
-  color: white;
-  word-spacing: 2px;
-}
-.loginMain{
-  background-color: rgb(199, 127, 127);
-  padding: 50px;
-  margin: 50px;
-  width: 500px;
+
+/* ==============================
+   Upload + Class Select Card
+=================================*/
+.uploadCard {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #cce3e8, #f1f7f8);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
-.loginMain input{
-  padding: 20px;
-  display: flex;
-  border: 1px solid black;
-  border-radius: 5px;
+.uploadCard h2 {
+  margin-bottom: 20px;
+  color: #083d45;
+  letter-spacing: 0.5px;
 }
-.loginMain button{
-  background-color: aqua;
+
+.uploadCard input[type="file"],
+.uploadCard select {
   width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  margin-top: 8px;
+  background: #fff;
+}
+
+.uploadCard button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid black;
+  background: #0b5f6b;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.uploadCard button:hover {
+  background: #06424b;
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   Student Detail Section
+=================================*/
+
+.stuDetail {
+  background: #f4fbfc;
+  border-left: 6px solid #0b5f6b;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.stuDetail h1 {
+  margin: 6px 0;
+  font-size: 20px;
+  color: #083d45;
+}
+
+/* ==============================
+   RESPONSIVE TABLE
+=================================*/
+.table {
+  width: 95%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.table th {
+  padding: 14px;
+  background: #0b5f6b;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Zebra striping */
+.table tbody tr:nth-child(even) {
+  background-color: #f2fbfc;
+}
+
+/* ==============================
+   TEXTAREA (Teacher Review)
+=================================*/
+.table textarea {
+  width: 95%;
+  min-height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #888;
+  outline: none;
+  font-size: 13px;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+.table textarea:focus {
+  border-color: #0b5f6b;
+  box-shadow: 0 0 6px rgba(11, 95, 107, 0.4);
+}
+
+/* ==============================
+   SUBMIT BUTTON
+=================================*/
+.table button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #0b5f6b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+
+.table button:hover {
+  background: #06424b;
+  transform: scale(1.05);
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+=================================*/
+@media (max-width: 768px) {
+  .table,
+  .stuDetail {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .stuDetail h1 {
+    font-size: 16px;
+  }
+
+  .uploadCard {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    display: block;
+    overflow-x: scroll;
+  }
+  
+  .table textarea {
+    min-width: 150px;
+  }
 }

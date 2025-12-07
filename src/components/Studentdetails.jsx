@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Navbar from "./navbar"
 function Studentdetails() {
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState("");
-
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   // Temporary state for parent reviews
   const [parentReviews, setParentReviews] = useState({
     FA1: "",
@@ -15,7 +15,7 @@ function Studentdetails() {
   });
 
   useEffect(() => {
-    const rollNumber = localStorage.getItem("user");
+    const rollNumber = localStorage.getItem("rollNumber");
 
     if (!rollNumber) {
       setMsg("No user logged in");
@@ -25,7 +25,7 @@ function Studentdetails() {
 
     async function fetchReviews() {
       try {
-        const res = await axios.get(`http://localhost:5000/student/${rollNumber}`);
+        const res = await axios.get(`${BASE_URL}/student/${rollNumber}`);
 
         if (res.data.success) {
           setStudent(res.data.student);
@@ -63,7 +63,7 @@ function Studentdetails() {
     }
 
     try {
-      const res = await axios.put("http://localhost:5000/parent-review", {
+      const res = await axios.put(`${BASE_URL}/parent-review`, {
         rollNumber: student.rollNumber,
         fa,
         parentReview: parentReviews[fa]
@@ -84,11 +84,13 @@ function Studentdetails() {
   if (msg) return <h2>{msg}</h2>;
 
   return (
+    <>
+    <Navbar/>
     <div style={{ padding: "20px" }}>
-
+      
       {student &&
         [student].map((stu) => (
-          <div key={stu.rollNumber}>
+          <div key={stu.rollNumber} class="stuDetail">
             <h1>Name: {stu.studentName}</h1>
             <h1>Roll Number: {stu.rollNumber}</h1>
             <h1>Class: {stu.class}</h1>
@@ -100,6 +102,7 @@ function Studentdetails() {
           border="1"
           cellPadding="10"
           style={{ borderCollapse: "collapse", width: "100%" }}
+          class ="table"
         >
           <thead>
             <tr>
@@ -136,6 +139,7 @@ function Studentdetails() {
         </table>
       )}
     </div>
+    </>
   );
 }
 
